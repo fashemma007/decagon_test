@@ -91,14 +91,14 @@ def drop_db(cursor):
 
 
 def create_database(cursor):
-		try:
-				cursor.execute(
-						"CREATE DATABASE {} DEFAULT CHARACTER SET 'utf8'".format(DATABASE_NAME))
-				print("Database {} created successfully.".format(DATABASE_NAME))
-				cursor.execute("USE {}".format(DATABASE_NAME))
-		except mysql.connector.Error as err:
-				print("Failed creating database: {}".format(err))
-				exit(1)
+	try:
+			cursor.execute(
+					"CREATE DATABASE {} DEFAULT CHARACTER SET 'utf8'".format(DATABASE_NAME))
+			print("Database {} created successfully.".format(DATABASE_NAME))
+			cursor.execute("USE {}".format(DATABASE_NAME))
+	except mysql.connector.Error as err:
+			print("Failed creating database: {}".format(err))
+			exit(1)
 
 		
 def connect_to_db(cursor):
@@ -147,7 +147,7 @@ def load(cursor):
 
 	except mysql.connector.Error as error:
 		print("Failed to insert continents record into MySQL continents table {}".format(error))
-	
+
 	print("===========Loading data into languages table============")
 	language_tuple = [tuple(r) for r in language_df.to_numpy()]
 
@@ -171,7 +171,7 @@ def load(cursor):
 		print(cursor.rowcount, "Record inserted successfully into currency table")
 
 	except mysql.connector.Error as error:
-		print("Failed to insert currency record into MySQL currency table {}".format(error))     
+		print("Failed to insert currency record into MySQL currency table {}".format(error))	 
 
 
 
